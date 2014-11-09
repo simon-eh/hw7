@@ -11,22 +11,26 @@ int main() {
 	s_size = 0;
 	BigInt *temp;
 	while((size=readline(&head,&tail)) != -1) {
-		print_big(head);
-		printf("\n");
-		deep_copy(s_tail, &temp);
-		// printf("Deep copy (backwards): ");
-		// print_backwards(temp);
-		// printf("\n");
-		int tsize = add(tail,temp,size,s_size,&s_head,&s_tail);
+		if(size == 1 && head->digit == 0) {
+			// printf("0\n");
+		}
+		else {
+			// print_big(head);
+			// printf("\n");
+			if(temp) {
+				clean(temp);
+			}
+			deep_copy(s_tail, &temp);
+			s_size = add(tail,temp,size,s_size,&s_head,&s_tail);
+		}
 		printf("Total: ");
 		print_big(s_head);
 		printf("\n");
-		s_size = tsize;
 	}
 	return 0;
 }
 
-/* Add the two numbers whose tails are pointed to by t1 and t2. s1 and s2 are the size of t1 and t2. */
+/* Add the two numbers whose tails are pointed to by t1 and t2. s1 and s2 are the size of t1 and t2.*/
 int add(BigInt *tail_1, BigInt *tail_2, int size_1, int size_2, BigInt **s_head, BigInt **s_tail) {
 	BigInt *solution = (*s_tail = malloc(sizeof(BigInt)));
 	BigInt *t1,*t2;
@@ -111,16 +115,16 @@ void print_backwards(BigInt *tail) {
 	}
 }
 
-/* Return the number of digits in head. Also tail will point to the least significant digit. */
+/* Read and print a line. Return the number of digits in head. Also tail will point to the least significant digit. */
 int readline(BigInt **head, BigInt** tail) {
 	char c;
 	*head = malloc(sizeof(BigInt));
-	for( ;(c=getchar()) == '0' || c == ' '; );
-	ungetc(c,stdin);
+	for( ;(c=getchar()) == '0' || isspace(c); ) {
+	}
 	int index = 0;
 	BigInt *big = *head;
 	big->prev=NULL;
-	for( ; (c=getchar()) <= '9' && c >= '0'; index++) {
+	for( ; c <= '9' && c >= '0'; index++, c=getchar()) {
 		big->digit=c-'0';
 		big->next=malloc(sizeof(BigInt));
 		big->next->prev=big;
@@ -145,4 +149,12 @@ int readline(BigInt **head, BigInt** tail) {
 		c = getchar();
 	}
 	return index;
+}
+
+void clean(BigInt* tail) {
+	while(tail != NULL && tail->prev != NULL) {
+		tail=tail->prev;
+		free(tail->next);
+	}
+	free(tail);
 }
