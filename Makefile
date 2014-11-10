@@ -10,4 +10,4 @@ run: additup.exe
 	./additup.exe < additup.txt
 
 clean:
-	rm -f additup.exe
+	rm -f additup

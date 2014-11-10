@@ -13,4 +13,6 @@ void print_big(BigInt*);
 void print_backwards(BigInt*);
 int add(BigInt*,BigInt*,int,int,BigInt**,BigInt**);
 void deep_copy(BigInt*,BigInt**);
-void clean(BigInt*);
+void clean_head(BigInt*);
+void clean_tail(BigInt*);
+void* c_malloc(size_t);

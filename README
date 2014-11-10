@@ -1,6 +1,17 @@
+1.
 Simon Ever-Hale
 11/3/2014
 CSCI 241/Prof. Kuperman
 HW7
 
-Add up giant numbers using linked lists and stuff.
+Additup: reads from stdin line by line and stores each number read (ignoring leading whitespace/0s and stopping at the first non-int char) into a doubly linked list. It sums up every number read as it reads them to create a running total.
+
+2. additup.c - contains all executable code and functions
+additup.h - contains function prototypes, includes, and the BigInt struct
+Makefile - contains compilation rules
+
+3. No known bugs or valgrind warnings.
+
+4. Estimated time spent - 8 hours
+
+5. Honestly I don't like how this came out. If I had more time, I'd probably just rewrite it because my code is kind of sloppy in my opinion and not as modular as I'd like it to be. I decided to make it doubly linked so that I could read in from the head and add from the tail, which was definitely a good choice because otherwise I'd have to use a lot more space or time flipping each number so I could add it.
