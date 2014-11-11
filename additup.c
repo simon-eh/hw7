@@ -123,7 +123,6 @@ void deep_copy(BigInt *tail, BigInt **target) {
 	result->next = NULL;
 	while(tail != NULL) {
 		result->digit = tail->digit;
-		// printf("Copied over digit %d\n",result->digit);
 		if(tail->prev != NULL) {
 			result->prev = c_malloc(sizeof(BigInt));
 			result->prev->next = result;

@@ -14,4 +14,4 @@ Makefile - contains compilation rules
 
 4. Estimated time spent - 8 hours
 
-5. Honestly I don't like how this came out. If I had more time, I'd probably just rewrite it because my code is kind of sloppy in my opinion and not as modular as I'd like it to be. I decided to make it doubly linked so that I could read in from the head and add from the tail, which was definitely a good choice because otherwise I'd have to use a lot more space or time flipping each number so I could add it.
+5. I decided to make it doubly linked so that I could read in from the head and add from the tail, which was definitely a good choice because otherwise I'd have to use a lot more space or time flipping each number so I could add it. Also I chose to use double pointers to modify BigInt values passed in as parameters instead of returning the BigInt itself so that I could instead return the number of nodes written and easily keep track of the size of all my BigInts. I made this consistent through all my functions that create BigInts: instead of returning the BigInt, I write it to a double pointer and return the size.

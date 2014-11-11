@@ -1,3 +1,6 @@
+#ifndef ADDITUP_H
+#define ADDITUP_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
@@ -16,3 +19,5 @@ void deep_copy(BigInt*,BigInt**);
 void clean_head(BigInt*);
 void clean_tail(BigInt*);
 void* c_malloc(size_t);
+
+#endif
